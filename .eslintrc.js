@@ -100,5 +100,6 @@ module.exports = {
     indent: ['error', 2],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
+    'vue/multi-word-component-names': 0,
   },
 }

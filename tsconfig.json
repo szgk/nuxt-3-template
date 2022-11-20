@@ -17,16 +17,10 @@
     "baseUrl": "..",
     "paths": {
       "@": [
-        "."
+        "./src"
       ],
       "@/*": [
-        "./*"
-      ],
-      "assets": [
-        "assets"
-      ],
-      "public": [
-        "public"
+        "./src*"
       ],
       "#app": [
         "node_modules/nuxt/dist/app"
