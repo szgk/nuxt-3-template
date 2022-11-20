@@ -1,25 +1,21 @@
 <template>
-<div
-    class="ha-humberger-button"
-    :class="{ ['-open']: isOpen }"
-    @click="onClick"
->
+  <div class="sa-hamburger-button" :class="{ ['-open']: isOpen }" @click="onClick">
     <div class="line" />
-</div>
+  </div>
 </template>
 <script setup lang="ts">
 type Props = {
-isOpen: boolean
+  isOpen: boolean
 }
 type Emits = {
-(emit: 'click'): void
+  (emit: 'click'): void
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 const emits = defineEmits<Emits>()
 
 const onClick = () => {
-emits('click')
+  emits('click')
 }
 </script>
 <style lang="scss">
@@ -27,50 +23,50 @@ emits('click')
 @use '@/assets/styles/mixins' as m;
 
 .ha-humberger-button {
-    cursor: pointer;
-    height: 20px;
-    position: relative;
-    width: 30px;
-    $height: 2px;
+  cursor: pointer;
+  height: 20px;
+  position: relative;
+  width: 30px;
+  $height: 2px;
 
-    .line,
-    &::before,
-    &::after {
-        background: #fff;
-        content: '';
-        display: block;
-        height: $height;
-        position: absolute;
-        transition: transform ease 0.1s;
-        width: 100%;
-    }
+  .line,
+  &::before,
+  &::after {
+    background: #fff;
+    content: '';
+    display: block;
+    height: $height;
+    position: absolute;
+    transition: transform ease 0.1s;
+    width: 100%;
+  }
 
+  .line {
+    top: 50%;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+
+  &.-open {
     .line {
-        top: 50%;
+      display: none;
     }
 
     &::before {
-        top: 0;
+      top: 50%;
+      transform: rotateZ(45deg);
     }
 
     &::after {
-        bottom: 0;
+      top: 50%;
+      transform: rotateZ(-45deg);
     }
-
-    &.-open {
-        .line {
-        display: none;
-        }
-
-        &::before {
-        top: 50%;
-        transform: rotateZ(45deg);
-        }
-
-        &::after {
-        top: 50%;
-        transform: rotateZ(-45deg);
-        }
-    }
+  }
 }
 </style>
